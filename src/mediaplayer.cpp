@@ -374,10 +374,7 @@ void MediaPlayer::loadMediaGeneric()
         m_gst_audio_tempo = createElement( "scaletempo", "tempo", false );
 
         // If we have the pitch changer
-        if ( pSettings->isRegistered() )
-            m_gst_audio_pitchadjust = createElement( "pitch", qPrintable( pSettings->registeredDigest ), false );
-        else
-            m_gst_audio_pitchadjust = 0;
+        m_gst_audio_pitchadjust = createElement( "pitch", qPrintable( pSettings->registeredDigest ), false );
 
         // Start linking
         bool linksucceed = true;

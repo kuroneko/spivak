@@ -528,42 +528,4 @@ bool MainWindow::hasCmdLineOption(const QString &option)
 
 void MainWindow::menuRegistration()
 {
-    QDialog dlg;
-    Ui::RegistrationDialog ui_dlg;
-
-    ui_dlg.setupUi( &dlg );
-
-    if ( pSettings->isRegistered() )
-    {
-        ui_dlg.groupRegistration->hide();
-        ui_dlg.lblStatus->setText( tr("<p>Application is registered to: <b>%1</b><br>Registration valid until: <b>%2</b><br>Registration ID: %3<p>Thank you for supporting this open source project!")
-                                   .arg( pSettings->registeredName )
-                                   .arg( pSettings->registeredUntil.toString( "dd MMM yyyy") )
-                                   .arg( pSettings->registeredDigest ) );
-
-        ui_dlg.leLicense->hide();
-    }
-    else
-    {
-        ui_dlg.groupRegistered->hide();
-        connect( ui_dlg.lblReginfo, SIGNAL(linkActivated(QString)), this, SLOT(registrationLinkClicked(QString)) );
-    }
-
-    if ( dlg.exec() == QDialog::Accepted && !pSettings->isRegistered() )
-    {
-        QString err = pSettings->validateCert( ui_dlg.leLicense->toPlainText() );
-
-        if ( err.isEmpty() )
-        {
-            QMessageBox::information( 0,
-                                   tr("Thank you for registering"),
-                                   tr("Your application has been registered. Thank you!"));
-        }
-        else
-        {
-            QMessageBox::critical( 0,
-                                   tr("Registration failed"),
-                                   tr("Registration failed: %1").arg(err) );
-        }
-    }
 }

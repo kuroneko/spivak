@@ -120,21 +120,21 @@ qint64 Notifications::drawRegular(KaraokePainter &p)
         QString message1, message2, message3;
 
         // First message
-        if ( pSettings->isRegistered() && !pSettings->notificationCustomMessage1.isEmpty() )
+        if ( !pSettings->notificationCustomMessage1.isEmpty() )
             message1 = pSettings->notificationCustomMessage1;
         else
             message1 = tr("Spivak Karaoke Player v.%1.%2").arg( APP_VERSION_MAJOR ).arg( APP_VERSION_MINOR );
 
         // Second message
-        if ( pSettings->isRegistered() && !pSettings->notificationCustomMessage2.isEmpty() )
+        if ( !pSettings->notificationCustomMessage2.isEmpty() )
             message2 = pSettings->notificationCustomMessage2;
         else
-            message2 = pSettings->isRegistered() ? "Registered version" : "Free version";
+            message2 = "";
 
         // Third message could be overwritten by custom message
         if ( !m_customMessage.isEmpty() )
             message3 = m_customMessage;
-        else if ( pSettings->isRegistered() && !pSettings->notificationCustomMessage3.isEmpty() )
+        else if ( !pSettings->notificationCustomMessage3.isEmpty() )
             message3 = pSettings->notificationCustomMessage3;
         else
             message3 = m_webserverURL.isEmpty() ? "Please select a song" : m_webserverURL;

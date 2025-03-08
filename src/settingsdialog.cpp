@@ -256,15 +256,10 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     ui->boxSaveQueueOnExit->setChecked( pSettings->queueSaveOnExit );
 
     // Main Screen customization tab
-    if ( pSettings->isRegistered() )
-    {
-        ui->lblCustomMessages->hide();
-        ui->leCustomMessage1->setText( pSettings->notificationCustomMessage1 );
-        ui->leCustomMessage2->setText( pSettings->notificationCustomMessage2 );
-        ui->leCustomMessage3->setText( pSettings->notificationCustomMessage3 );
-    }
-    else
-        ui->groupDisplayMessages->setEnabled( false );
+    ui->lblCustomMessages->hide();
+    ui->leCustomMessage1->setText( pSettings->notificationCustomMessage1 );
+    ui->leCustomMessage2->setText( pSettings->notificationCustomMessage2 );
+    ui->leCustomMessage3->setText( pSettings->notificationCustomMessage3 );
 
     // Web server
     ui->boxWebEnable->setChecked( pSettings->httpEnabled );
